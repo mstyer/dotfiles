@@ -1,0 +1,17 @@
+[user]
+	name = Mike Styer
+	email = mstyer@ooyala.com
+[core]
+	editor = /usr/bin/vim
+[merge]
+	tool = diffmerge
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
