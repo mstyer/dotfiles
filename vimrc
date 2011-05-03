@@ -73,6 +73,8 @@ if has("autocmd")
 
   augroup END
 
+  au FileType crontab set nobackup nowritebackup
+
 else
 
   set autoindent		" always set autoindenting on
@@ -144,5 +146,4 @@ nmap <Space> <Plug>RDSendLine
 let marksCloseWhenSelected = 0
 let showmarks_include = "abcdefghijklmnopqrstuvwxyz"
 
-" Eclim Settings
-"
+
