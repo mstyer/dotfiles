@@ -16,5 +16,6 @@ HAVE_DOT=YES
 DOT_PATH=/usr/local/graphviz-2.14/bin
 
 # User specific aliases and functions
+alias kinit='/usr/bin/kinit -l7days'
 
 source ~/.aws/dev_credentials
