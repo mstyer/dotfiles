@@ -3,7 +3,6 @@
 # based on a chunk of jpb's bash profile.
 #
 # Load aliases and functions
-echo "bash_profile"
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
