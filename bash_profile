@@ -3,6 +3,7 @@
 # based on a chunk of jpb's bash profile.
 #
 # Load aliases and functions
+echo "bash_profile"
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
@@ -34,20 +35,45 @@ fi
 
 export BASH_ENV ENV PATH PS1 DISPLAY
 
-# from macosxhints.com
-cdf() # cd's to frontmost window of Finder
-{
-    cd "`osascript -e 'tell application "Finder"' \
-        -e 'set myname to POSIX path of (target of window 1 as alias)' \
-        -e 'end tell' 2>/dev/null`"
-}
+# Do OS-specific stuff
+uname=$(uname)
+case $uname in
+  "Linux")
+  # start ssh agent
+  SSH_ENV=$HOME/.ssh/environment
+  function start_agent {
+    echo "Initializing new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+  }
+
+  if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+      start_agent;
+    }
+  else
+    start_agent;
+  fi
+
+  ;;
+
+  "Darwin")
+  # from macosxhints.com
+  cdf() # cd's to frontmost window of Finder
+  {
+      cd "`osascript -e 'tell application "Finder"' \
+          -e 'set myname to POSIX path of (target of window 1 as alias)' \
+          -e 'end tell' 2>/dev/null`"
+  }
+  ;;
+esac
 
 
-if [ $(ssh-add -l | grep -c "The agent has no identities." ) -eq 1 ]; then
-    if [ -f /mach_kernel ]; then
-        ssh-add -k
-    fi
-fi
+
 
 # Setup bash history options
 # export HISTCONTROL=erasedups
