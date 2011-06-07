@@ -15,3 +15,11 @@
 [mergetool "diffmerge"]
 	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
+[fetch]
+	recurseSubmodules = true
+[push]
+	default = tracking
