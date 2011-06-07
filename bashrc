@@ -19,3 +19,5 @@ DOT_PATH=/usr/local/graphviz-2.14/bin
 alias kinit='/usr/bin/kinit -l7days'
 
 source ~/.aws/dev_credentials
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
