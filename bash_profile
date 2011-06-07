@@ -104,4 +104,3 @@ fi
 rvm_kill () {
     ps ax|grep rvm |grep -v grep|awk '{print $1}'|xargs kill -9
 }
-[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm" # Load RVM function

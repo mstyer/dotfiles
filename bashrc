@@ -20,4 +20,10 @@ alias kinit='/usr/bin/kinit -l7days'
 
 source ~/.aws/dev_credentials
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+if [ -f "$HOME/.rvm/scripts/rvm" ]; then
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+fi
+
+if [ -f "/usr/local/rvm/scripts/rvm" ]; then
+  [[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm" # Load RVM function
+fi
