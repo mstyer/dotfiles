@@ -17,6 +17,7 @@ DOT_PATH=/usr/local/graphviz-2.14/bin
 
 # User specific aliases and functions
 alias kinit='/usr/bin/kinit -l7days'
+alias gitk='/usr/bin/wish $(which gitk)'
 
 source ~/.aws/dev_credentials
 
