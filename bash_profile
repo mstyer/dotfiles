@@ -69,13 +69,13 @@ fi
 
 export OOYALA_CODE_ROOT=~/repos/ooyala
 export RUBYOPT="-I. -rubygems"
-export MYSQL_UNIX_PORT=`mysql_config --socket`
+if [ `which mysql_config`x != "x" ]; then
+  export MYSQL_UNIX_PORT=`mysql_config --socket`
+fi
 export HADOOP_HOME=$OOYALA_CODE_ROOT/vendor/hadoop_distros/current
 export PATH=$PATH:$HADOOP_HOME/bin:$OOYALA_CODE_ROOT/hadoop/tools
-if [ -d /usr/libexec/java_home ]; then
+if [ -x /usr/libexec/java_home ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
-else
-  export JAVA_HOME=`/usr/bin/java`
 fi
 
 rvm_kill () {

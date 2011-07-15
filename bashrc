@@ -19,7 +19,9 @@ DOT_PATH=/usr/local/graphviz-2.14/bin
 alias kinit='/usr/bin/kinit -l7days'
 alias gitk='/usr/bin/wish $(which gitk)'
 
-source ~/.aws/dev_credentials
+if [ -f "$HOME/.aws/dev_credentials" ]; then
+  source $HOME/.aws/dev_credentials
+fi
 
 if [ -f "$HOME/.rvm/scripts/rvm" ]; then
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
