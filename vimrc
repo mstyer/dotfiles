@@ -73,6 +73,16 @@ if has("autocmd")
 
   augroup END
 
+  augroup json_autocmd
+    autocmd! 
+    autocmd FileType json set autoindent 
+    autocmd FileType json set formatoptions=tcq2l 
+    autocmd FileType json set textwidth=78 shiftwidth=2 
+    autocmd FileType json set softtabstop=2 tabstop=8 
+    autocmd FileType json set expandtab 
+    autocmd FileType json set foldmethod=syntax 
+  augroup END
+
   au FileType crontab set nobackup nowritebackup
 
 else
@@ -145,5 +155,8 @@ nmap <Space> <Plug>RDSendLine
 " Showmarks customizations
 let marksCloseWhenSelected = 0
 let showmarks_include = "abcdefghijklmnopqrstuvwxyz"
+
+" Allow w!! to write root-owned files via sudo
+cmap w!! w !sudo tee % >/dev/null
 
 
