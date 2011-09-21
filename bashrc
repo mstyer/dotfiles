@@ -14,6 +14,7 @@ PS1="\[\033[1;36m\]\t [\u@\h \W]\$ \[\033[0m\]"
 # Environment variables
 HAVE_DOT=YES
 DOT_PATH=/usr/local/graphviz-2.14/bin
+OOYALA_CODE_ROOT=$HOME/repos/ooyala
 
 # User specific aliases and functions
 alias kinit='/usr/bin/kinit -l7days'
