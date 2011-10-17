@@ -1,9 +1,16 @@
 #!/bin/bash
 
 DOTDIR=`pwd`
-for f in `ls $DOTDIR`
-do
-  if [[ "$f" != README* ]] \
+if [[ $# > 0 ]]
+then
+  files=("$@")
+else
+  files=`ls $DOTDIR`
+fi
+
+for f in $files; do
+  if   [[ -f "$f" ]] \
+    && [[ "$f" != README* ]] \
     && [[ "$f" != .* ]] \
     && [[ "$f" != *.sh ]] \
     && [[ "$f" != *~ ]]
