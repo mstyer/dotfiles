@@ -8,8 +8,9 @@ if v:progname =~? "evim"
 endif
 
 " Only for Mac OS
-" TODO: How to make this conditional?
-set noanti
+if has("mac")
+  set noanti
+end
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -17,6 +18,9 @@ set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+" no bell
+set visualbell
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -148,6 +152,10 @@ set completeopt=menuone,menu,longest,preview
 " OpenGL Shader Language highlighting
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 
+" Coffeescript
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
 " R-plugin maps
 vmap <Space> <Plug>RDSendSelection
 nmap <Space> <Plug>RDSendLine
@@ -155,6 +163,9 @@ nmap <Space> <Plug>RDSendLine
 " Showmarks customizations
 let marksCloseWhenSelected = 0
 let showmarks_include = "abcdefghijklmnopqrstuvwxyz"
+
+" Pathogen
+call pathogen#infect()
 
 " Allow w!! to write root-owned files via sudo
 cmap w!! w !sudo tee % >/dev/null
