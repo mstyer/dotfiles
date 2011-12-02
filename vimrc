@@ -104,7 +104,7 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 colorscheme darkblue
 
 " set font
-set guifont=Courier\ New:h12
+set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 
 " set guioptions
 set guioptions-=m " turn off menu bar
