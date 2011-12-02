@@ -23,3 +23,5 @@
 	recurseSubmodules = true
 [push]
 	default = tracking
+[rerere]
+	enabled = 1
